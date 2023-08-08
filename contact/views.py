@@ -74,6 +74,8 @@ class ContactView(APIView):
                phone_numbers.append(queryset[i].phoneNumber)
                secondary_ids.append(queryset[i].id)
                
+        emails = [*set(emails)]
+        phone_numbers = [*set(phone_numbers)]
         data = {
             "contact":{
                 "primaryContatctId": primary_id,
