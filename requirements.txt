@@ -1,6 +1,6 @@
 asgiref==3.7.2
 dj-database-url==2.0.0
-Django==4.2.4
+Django==3.2.20
 djangorestframework==3.14.0
 psycopg2-binary==2.9.7
 pytz==2023.3
