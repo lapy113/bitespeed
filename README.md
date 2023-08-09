@@ -9,6 +9,9 @@ Sample payload json/application
     "email":"2@g.com"
 }
 
+One customer can have multiple **`Contact`** rows in the database against them. All of the rows are linked together with the oldest one being treated as "primary” and the rest as “secondary” . 
+
+`**Contact`** rows are linked if they have either of **`email`** or **********`phone`** as common.
 
 The API can be used to detect and prevent misuse of Affiliate program by linking multiple accounts
 in an e-commerce website, so a person participating in the program cannot use their other account to order 
@@ -47,3 +50,33 @@ database will have the following rows:
   deletedAt            null
 }
 ```
+Upon ordering with common phone/email, those two accounts can be linked and user will not get commision.
+
+Request
+```
+{
+	"email": "mcfly@hillvalley.edu",
+	"phoneNumber": "123456"
+}
+```
+
+Response
+```
+
+{
+	"contact":{
+		"primaryContatctId": 1,
+		"emails": ["lorraine@hillvalley.edu","mcfly@hillvalley.edu"]
+		"phoneNumbers": ["123456"]
+		"secondaryContactIds": [23]
+	}
+}
+```
+
+### But what happens if there are no existing **contacts** against an incoming request?
+
+The service will simply create a new `**Contact**` row with `linkPrecedence=”primary"` treating it as a new customer and return it with an empty array for `secondaryContactIds`
+
+### When is a secondary contact created?
+
+If an incoming request has either of `phoneNumber` or `email` common to an existing contact but contains new information, the service will create a “secondary” **************`Contact`** row.
