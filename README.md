@@ -15,17 +15,17 @@ in an e-commerce website, so a person participating in the program cannot use th
 and get commision on those orders.
 
 If a customer placed an order with 
-'''
+```
 email=lorraine@hillvalley.edu
 phoneNumber=123456 
-'''
+```
 and later came back to place another order with 
-'''
+```
 email=mcfly@hillvalley.edu & phoneNumber=123456
-'''
+```
 database will have the following rows:
 
-'''
+```
 {
 	id                   1                   
   phoneNumber          "123456"
@@ -46,4 +46,4 @@ database will have the following rows:
   updatedAt            2023-04-20 05:30:00.11+00              
   deletedAt            null
 }
-'''
+```
